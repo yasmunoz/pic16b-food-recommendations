@@ -19,15 +19,15 @@ Partial success: Our data in a partial success might be obtained from Kaggle ins
 Bonus success: Customizing recipes and restaurant recommendations down to the user’s personal diet, which would also benefit those with very specific diets.
  
 ## Resources:
--We will scrape recipe information from (a certain recipe website)
--Kaggle, for recipe information if web scraping doesn’t work.
+* We will scrape recipe information from (a certain recipe website)
+* Kaggle, for recipe information if web scraping doesn’t work.
  
 ## Tools/skills:
--Web scraping! For this project, we would have to collect a large amount of data from different websites.
--Sqlite3 and Pandas to manage our data.
--Heroku, to turn our webapp into an easily accessible url. 
--Plotly, for graphical data visualizations of places to eat and their locations.
--We will also need machine learning in order to determine which options ‘best fit’ the needs of the consumer. 
+* Web scraping! For this project, we would have to collect a large amount of data from different websites.
+* Sqlite3 and Pandas to manage our data.
+* Heroku, to turn our webapp into an easily accessible url. 
+* Plotly, for graphical data visualizations of places to eat and their locations.
+* We will also need machine learning in order to determine which options ‘best fit’ the needs of the consumer. 
  
 ## What we’ll learn:
 This project requires us to explore different web frameworks and as a result we will learn about these different frameworks and how to manipulate them in order to develop our unique website.
