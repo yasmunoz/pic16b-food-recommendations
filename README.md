@@ -1,4 +1,8 @@
 # PIC16B Winter 2022 Project Proposal
+## Contributors:
+Evelyn Hu
+Yasmin Munoz
+Gracie Ge
 
 ## Abstract:
 In order to provide variation to our users’ diets, we aim to create a webapp that allows users to easily find recipes based on the food items (ingredients) they enter. If they don’t feel like cooking, they could also use the restaurant recommender function to find a nice restaurant near them according to their preferences. 
