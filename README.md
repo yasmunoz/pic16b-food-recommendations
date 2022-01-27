@@ -42,9 +42,13 @@ This could be less feasible for those that have food deserts where they are look
  
 ## Timeline:
 February 10: Build our database/get all of our data together
+
 February 17: Have all of the code for visualizations that will go on the website created (including but not limited to geographic data visualizations based on the location selected)
+
 February 24: Have the ‘front end’ of our webapp created, with a machine learning algorithm that is not at its final stage
+
 March 1st: Finish ML algorithm.
+
 March 8th: Improve overall project for efficiency and visual appeal for its’ final stage for the class.
  
  
