@@ -1,7 +1,9 @@
 # PIC16B Winter 2022 Project Proposal
 ## Contributors:
-Evelyn Hu
+Evelyn Hu 
+
 Yasmin Munoz
+
 Gracie Ge
 
 ## Abstract:
