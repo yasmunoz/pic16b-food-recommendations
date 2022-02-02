@@ -1,6 +1,6 @@
 # PIC16B Winter 2022 Project Proposal: Food Reccomender App
 ## Contributors:
-Evelyn Hu 
+Conor McCaulley
 
 Yasmin Munoz
 
