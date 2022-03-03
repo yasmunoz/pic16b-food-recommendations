@@ -1,0 +1,16 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} Foodle, your personal Recipe Finder </title>
+<nav>
+    <h1> Foodle, your personal Recipe Finder </h1>
+    <!-- <link rel="stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
+    <!-- <b>Navigation:</b> -->
+    <ul>
+        <li><a href="{{ url_for('finder') }}">Find a recipe through entering ingredients!</a></li>
+    </ul>
+</nav>
+<section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% block content %}{% endblock %}
+  </section>

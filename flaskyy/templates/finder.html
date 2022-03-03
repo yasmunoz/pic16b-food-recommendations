@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block header %}
+  <h1>{% block title %}Find a Recipe{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+        <label for="ingredients">Enter ingredients here:</label>
+        <input type="text" name="ingredients">
+        <input type="submit" value="Submit">
+  </form>
+  {% if ingredients %}
+  <p>Thank you for entering ingredients. Lol the webapp doesn't work yet</p>
+  <p>Title: {{title}}</p>
+  <p>Ingredients: {{ingrz}}</p>
+  <p>How to make: </p>
+  <p>{{steps}}</p>
+  {% endif %}
+{% endblock %}
