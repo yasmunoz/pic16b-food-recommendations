@@ -13,6 +13,7 @@ def main():
   #  return "hi there"
 
 #retrieve database to use in our webapp
+#i got the code from a flask tutorial website and changed it up a little
 def get_db():
     if 'foodz' not in g:
         g.foodz = sqlite3.connect(
@@ -20,6 +21,7 @@ def get_db():
             detect_types=sqlite3.PARSE_DECLTYPES
         )
         g.foodz.row_factory = sqlite3.Row
+    #create table so that we can access it with the query function
     g.foodz.execute('''CREATE TABLE IF NOT EXISTS recipes(title TEXT, ingredients TEXT, instructions TEXT)''')
     return g.foodz
 
@@ -50,7 +52,6 @@ def finder():
     if request.method == 'GET':
         return render_template('finder.html')
     else:
-        #input_ingredients = request.form['ingredients'].split(',')
         ingredients = request.form['ingredients']
         recipe = searcher(ingredients)
         newr = recipe.sample(n=1)
