@@ -14,17 +14,17 @@ def main():
 
 #retrieve database to use in our webapp
 def get_db():
-    if 'foodz' not in g:
-        g.foodz = sqlite3.connect(
-            current_app.config['foodz.db'],
+    if 'xfoodz' not in g:
+        g.xfoodz = sqlite3.connect(
+            current_app.config['xfoodz.db'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
-        g.foodz.row_factory = sqlite3.Row
-    g.foodz.execute('''CREATE TABLE IF NOT EXISTS recipes(title TEXT, ingredients TEXT, instructions TEXT)''')
-    return g.foodz
+        g.xfoodz.row_factory = sqlite3.Row
+    g.xfoodz.execute('''CREATE TABLE IF NOT EXISTS recipes(title TEXT, ingredients TEXT, instructions TEXT, category TEXT)''')
+    return g.xfoodz
 
 def close_db(e=None):
-    db = g.pop('foodz', None)
+    db = g.pop('xfoodz', None)
     if db is not None:
         db.close()
 
@@ -37,7 +37,7 @@ def searcher(ingredientz):
         likey += f"R.ingredients LIKE '%{ig}%' OR "
         #took me the entire afternoon to figure the above line out. :')
         #so that our program returns recipes that include any or all of the ingredients the user specifies. 
-    conn = sqlite3.connect("foodz.db")
+    conn = sqlite3.connect("xfoodz.db")
     query = \
     f"""
     SELECT * FROM recipes R
@@ -58,9 +58,19 @@ def finder():
         title = newr['title'].iloc[0]
         #i tried to_string, but the output ended up being truncated.
         ingrz = newr['ingredients'].iloc[0]
+        newingrz = ingrz.split(" ,")
+        ingrlist=[]
+        for i in newingrz:
+            ingrlist.append(i.replace(' ,','\n'))
         steps = newr['recipe'].iloc[0]
+        newsteps = steps.split(". ")
+        steplist=[]
+        for k in newsteps:
+            steplist.append(k.replace('. ','\n'))
+        category = newr['category'].iloc[0]
         return render_template('finder.html', 
                                ingredients=True,
                                title = title,
-                               ingrz = ingrz,
-                               steps = steps)
+                               ingrz = ingrlist,
+                               steps = steplist,
+                               category = category)

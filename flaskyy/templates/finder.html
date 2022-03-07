@@ -12,10 +12,24 @@
         <input type="submit" value="Submit">
   </form>
   {% if ingredients %}
-  <p>Thank you for entering ingredients. Lol the webapp doesn't work yet</p>
-  <p>Title: {{title}}</p>
-  <p>Ingredients: {{ingrz}}</p>
-  <p>How to make: </p>
-  <p>{{steps}}</p>
+  <p>Here's a recipe for you:</p>
+  <h2>{{title}}</h2>
+  <p>Category: {{category}}</p>
+  <div class="left">
+    <b>Ingredients:</b>
+    <ul>
+      {% for i in ingrz %}
+   
+        <p>{{i}}</p>
+    
+      {% endfor %}
+    </ul>
+  <b>How to make: </b>
+  <ul>
+    {% for k in steps %}
+      <p>{{k}}</p>
+    {% endfor %}
+  </ul>
   {% endif %}
+</div>
 {% endblock %}

@@ -2,11 +2,13 @@
 <title>{% block title %}{% endblock %} Foodle, your personal Recipe Finder </title>
 <nav>
     <h1> Foodle, your personal Recipe Finder </h1>
-    <!-- <link rel="stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
+    <link rel="stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
     <!-- <b>Navigation:</b> -->
+    <div class="center">
     <ul>
-        <li><a href="{{ url_for('finder') }}">Find a recipe through entering ingredients!</a></li>
+        <li><a href="{{ url_for('finder') }}">Find a recipe</a></li>
     </ul>
+    </div>
 </nav>
 <section class="content">
     <header>
