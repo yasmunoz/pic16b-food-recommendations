@@ -2,8 +2,6 @@
 ## Contributors:
 Conor McCaulley
 
-Yasmin Munoz
-
 Gracie Ge
 
 ## Abstract:
