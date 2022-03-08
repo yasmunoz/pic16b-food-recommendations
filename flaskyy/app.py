@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, g, current_app
 import sqlite3
 import pandas as pd
+import random
 
 app = Flask(__name__)
 
@@ -45,6 +46,12 @@ def searcher(ingredientz):
     """
     df = pd.read_sql_query(query, conn)
     return df   
+
+def generate(n):
+    new = random.choice(n)
+    return new
+
+
 @app.route('/finder/', methods=['POST', 'GET'])
 def finder():
     if request.method == 'GET':
@@ -74,3 +81,12 @@ def finder():
                                ingrz = ingrlist,
                                steps = steplist,
                                category = category)
+@app.route('/generator/', methods=['POST', 'GET'])
+def generator():
+    if request.method == 'GET':
+        return render_template('generator.html')
+    else:
+        n = request.form['n']
+        newn = generate(n)
+        return render_template('generator.html', n=newn, word=n)
+

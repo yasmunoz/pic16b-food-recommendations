@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block header %}
+  <h1>{% block title %}Generate a New Recipe{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+  <form method="post">
+        <label for="n">Enter a random word here:</label>
+        <input type="text" name="n">
+        <input type="submit" value="Submit">
+  </form>
+  {% if n %}
+  <p>You entered: </p>
+  <h2>{{word}}</h2>
+  <p>Here's a random letter:</p>
+  <h2>{{n}}</h2>
+  {% endif %}
+</div>
+{% endblock %}
