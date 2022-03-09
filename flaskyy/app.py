@@ -7,6 +7,20 @@ import pickle
 import tensorflow as tf
 from scipy.special import softmax
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app = Flask(__name__)
 
 #from .searcher import searcher
@@ -101,12 +115,24 @@ def generator():
     if request.method == 'GET':
         return render_template('generator.html')
     else:
-        gen_legth = request.form['gen_legth']
+        gen_length = request.form['gen_length']
 
-        new_recipe=generate_string(gen_legth, model,X,chars,lines)
+        new_recipe=generate_string(gen_length, model,X,chars,lines)
+        #new_recipe=new_recipe.replace('\n', ''<br>'')
 
-        return render_template('generator.html', new_recipe=new_recipe, legth= gen_legth)
+        return render_template('generator.html', new_recipe=new_recipe, length= gen_length)
 
+def sample(preds, temp):
+        # format the model predictions
+        preds = np.asarray(preds).astype("float64")
+        
+        # construct normalized Boltzman with temp
+        probs = np.exp(preds/temp)
+        probs = probs / probs.sum()
+        
+        # sample from Boltzman
+        samp = np.random.multinomial(1, probs, 1)
+        return np.argmax(samp)
 
 
 def generate_string(gen_length, model, X, chars,lines): 
@@ -114,6 +140,8 @@ def generate_string(gen_length, model, X, chars,lines):
     seed_index = random.randint(0, 50)
     max_len=20
     X=X
+    gen_length=int(gen_length)
+    
 
     # sequence of integer indices for generated text
     gen_seq = np.zeros((max_len + gen_length, 110))
@@ -142,16 +170,3 @@ def generate_string(gen_length, model, X, chars,lines):
     
     # only return the string version because that's what we care about
     return(gen_text)
-
-
-    def sample(preds, temp):
-        # format the model predictions
-        preds = np.asarray(preds).astype("float64")
-        
-        # construct normalized Boltzman with temp
-        probs = np.exp(preds/temp)
-        probs = probs / probs.sum()
-        
-        # sample from Boltzman
-        samp = np.random.multinomial(1, probs, 1)
-        return np.argmax(samp)
