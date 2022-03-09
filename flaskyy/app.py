@@ -107,7 +107,7 @@ def generator():
     #load in our chars variable from the chars.pkl file
     chars= pickle.load(open('chars.pkl', 'rb'))
 
-    X=pickle.load(open('X.pkl', 'rb'))
+    X=pickle.load(open('X_50.pkl', 'rb'))
 
     lines=pickle.load(open('lines.pkl', 'rb'))
 
