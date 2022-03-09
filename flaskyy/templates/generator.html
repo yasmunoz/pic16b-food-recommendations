@@ -7,15 +7,15 @@
 {% block content %}
 
   <form method="post">
-        <label for="n">Enter a random word here:</label>
-        <input type="text" name="n">
+        <label for="gen_legth">Enter the length of the recipe you'd like to generate:</label>
+        <input type="int" name=" gen_length">
         <input type="submit" value="Submit">
   </form>
-  {% if n %}
+  {% if gen_length %}
   <p>You entered: </p>
-  <h2>{{word}}</h2>
-  <p>Here's a random letter:</p>
-  <h2>{{n}}</h2>
+  <h2>{{length}}</h2>
+  <h2>Here's your brand new recipe!:</h2>
+  <p>{{new_recipe}}</p>
   {% endif %}
 </div>
 {% endblock %}
