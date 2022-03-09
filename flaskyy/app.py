@@ -1,25 +1,10 @@
 from flask import Flask, render_template, request, g, current_app
 import sqlite3
 import pandas as pd
-import random
 import numpy as np
 import pickle
 import tensorflow as tf
 from scipy.special import softmax
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app = Flask(__name__)
 
@@ -53,22 +38,22 @@ def searcher(ingredientz):
     #splits the ingredients the user enters into a list
     likey = ""
     for ig in ingrs:
-        likey += f"R.ingredients LIKE '%{ig}%' OR "
+        likey += f"R.ingredients LIKE '%{ig}%' AND "
         #took me the entire afternoon to figure the above line out. :')
         #so that our program returns recipes that include any or all of the ingredients the user specifies. 
     conn = sqlite3.connect("xfoodz.db")
     query = \
     f"""
     SELECT * FROM recipes R
-    WHERE {likey[:-3]} 
+    WHERE {likey[:-4]} 
     """
     df = pd.read_sql_query(query, conn)
     return df   
-
+"""
 def generate(n):
     new = random.choice(n)
     return new
-
+"""
 
 @app.route('/finder/', methods=['POST', 'GET'])
 def finder():
@@ -94,7 +79,7 @@ def finder():
             steplist.append(k.replace('. ','\n'))
         category = newr['category'].iloc[0]
         return render_template('finder.html', 
-                               ingredients=True,
+                               ingredients=ingredients,
                                title = title,
                                ingrz = ingrlist,
                                steps = steplist,
