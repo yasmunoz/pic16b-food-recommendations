@@ -118,7 +118,7 @@ def generator():
         gen_length = request.form['gen_length']
 
         new_recipe=generate_string(gen_length, model,X,chars,lines)
-        #new_recipe=new_recipe.replace('\n', ''<br>'')
+        new_recipe=new_recipe.replace('Æ', '')
 
         return render_template('generator.html', new_recipe=new_recipe, length= gen_length)
 
@@ -137,7 +137,7 @@ def sample(preds, temp):
 
 def generate_string(gen_length, model, X, chars,lines): 
     temp=.1
-    seed_index = random.randint(0, 50)
+    seed_index = 0
     max_len=20
     X=X
     gen_length=int(gen_length)
