@@ -1,4 +1,4 @@
-# PIC16B Winter 2022 Project Proposal: Food Reccomender App
+# PIC16B Winter 2022 Project Proposal: Food Recommender App
 ## Contributors:
 Conor McCaulley
 
