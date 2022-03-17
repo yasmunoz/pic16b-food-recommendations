@@ -12,8 +12,8 @@ To install flask, use the command line and enter `pip install Flask`. For Tensor
 Open the downloaded folder in VS code (or any other code editor of your choice). Navigate to the folder named "flaskyy" by typing `cd (Where you downloaded the repo folder to)/pic16b-food-recommendations/flaskyy`. Alternatively, you can just open a terminal window through the code editor. In this case, entering `cd flaskyy` directly brings you to the flaskyy directory. 
 
 Next, enter the following lines into your terminal:
-```export FLASK_ENV=development
-flask run```
+`export FLASK_ENV=development`
+`flask run`
 
 Now you can access the webapp locally! Paste http://127.0.0.1:5000/ into your browser.
 
