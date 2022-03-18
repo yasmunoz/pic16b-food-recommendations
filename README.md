@@ -1,8 +1,13 @@
 # Foodle! 
-## Contributors:
+## Contributors and Contribution Statement
 Conor McCaulley
+    1. Built the generation models
+    2. Integrated the selected generation model into the flask web app.
 
 Gracie Ge
+    1. Build the scrapers which scraped the recipes we used for generation model training and for the recipe search function of the web app. 
+    2. Build the flask web app framework and design ad well as the recipe search functionality within the web app.
+
 
 ## Getting Started
 Download the entire repository from this site and make sure you have flask and tensorflow installed on your machine.
