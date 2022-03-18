@@ -28,7 +28,9 @@ In this example, I entered "almond milk sugar". The recipe finder will return a 
 Here's how it works: we have scraped different world cuisine recipes from allrecipes.com into a csv file (you can check it out at newrecipes.csv), which is then converted into a database `xfoodz.db`. Once a user enters ingredients, our function will query the database for a recipe that matches all the ingredients entered by the user.
 
 ## Generating a new recipe
+To generate a new recipe, first click on 'generate a new recipe' to navigate to the generator page. A text entry box will appear on the screen, pleses input the legth in characters of the recipe that you with to generate and hit the submit button. The flask application will send the recipe length to the generator model that we have built which will then return the generated recipe. Keep in mind that this process is computationally expensive and may take some time to run. Do not reload the page during this process. The recipe will automatically be displayed on the page when it is finished generating. 
 
 ## Limitations
 1. If a user enters nonsense, the app will not show an error message. 
 2. While the recipe searcher provides users with an extensive variety of different recipes to try, it doesn't take into account the fact that someone might only have ingredients x, y, and z-the returned recipe only **includes** the specified ingredients, but it almost always also contains other ingredients. 
+3. The web app can be very sluggish when trying to generate a new recipe due to the computational load of character by character generation. There is not a loading bar or other such device to alert the user that the webpage is functioning normally and thus the user may think that the webpage is frozen and attempt to reload the page which will not fix the problem. 

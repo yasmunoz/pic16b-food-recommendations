@@ -90,15 +90,23 @@ def generator():
     model=tf.keras.models.load_model('recipe_gen_model.h5')
 
     #load in our chars variable from the chars.pkl file
+    #this contains all chars avalible from the training data
     chars= pickle.load(open('chars.pkl', 'rb'))
 
+    #load in X from the pickled file, this variable contains the 
+    #first 50 possible starting seeds. One will be randomly selected. 
     X=pickle.load(open('X_50.pkl', 'rb'))
 
+    #load in the lines file. this file contains all of the lines which
+    #are used as predictor information by the model
     lines=pickle.load(open('lines.pkl', 'rb'))
 
-
+    #if the method is get, render the generator template to collect the users
+    #preferance of generation length
     if request.method == 'GET':
         return render_template('generator.html')
+    #if the method is post, generate a new recipe using the user selected
+    #length and then remove the start char 'Æ' before displaying it to the user
     else:
         gen_length = request.form['gen_length']
 
@@ -108,26 +116,46 @@ def generator():
         return render_template('generator.html', new_recipe=new_recipe, length= gen_length)
 
 def sample(preds, temp):
-        # format the model predictions
-        preds = np.asarray(preds).astype("float64")
-        
-        # construct normalized Boltzman with temp
-        probs = np.exp(preds/temp)
-        probs = probs / probs.sum()
-        
-        # sample from Boltzman
-        samp = np.random.multinomial(1, probs, 1)
-        return np.argmax(samp)
+    '''
+    This function takes the prediction list and samples it randomly 
+    acording to the temperature provided. 
+
+    @params 
+    preds-the list of predictions
+    temp-the temperature (how random you want the prediction to be)
+    '''
+    # format the model predictions
+    preds = np.asarray(preds).astype("float64")
+    
+    # construct normalized Boltzman with temp
+    probs = np.exp(preds/temp)
+    probs = probs / probs.sum()
+    
+    # sample from Boltzman
+    samp = np.random.multinomial(1, probs, 1)
+    return np.argmax(samp)
 
 
 def generate_string(gen_length, model, X, chars,lines): 
+    '''
+    This function generates a string based on the read in length,
+    model, seed variables, avalible chars, and predictor lines. 
+    
+    @params
+    gen_length(int): the length of the string to be generated
+    model: the pretrained generation model
+    X(list): the list of possible seeds
+    chars(list): the list of all used chars from the training data
+    lines(list): the list of all predictor lines
+    '''
+    #saves the various read in arguments to their variables
     temp=.1
     seed_index = 0
     max_len=20
     X=X
     gen_length=int(gen_length)
     
-
+    
     # sequence of integer indices for generated text
     gen_seq = np.zeros((max_len + gen_length, 110))
     
