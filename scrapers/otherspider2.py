@@ -34,6 +34,12 @@ class foodspider(scrapy.Spider):
     def parse_data(self, response):
         #recipez=response.css("div.component.card.card__category")
         recipez=response.css("div.tout__contentHeadline a")
+        #oneRecipe=recipez.css("div.card__imageContainer a")
+        #dishes=[]
+        #for dish in [a.attrib["href"] for a in oneRecipe]:
+
+        #categorytitle = response.css("h1.categoryPage__heading.elementFont__headline:text").get()
+        #category = categorytitle.split()[1]
 
         for dish in [a.attrib["href"] for a in recipez]:
             dish_url = response.urljoin(dish)
