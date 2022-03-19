@@ -6,6 +6,7 @@ import pickle
 import tensorflow as tf
 from scipy.special import softmax
 
+
 app = Flask(__name__)
 
 #from .searcher import searcher
